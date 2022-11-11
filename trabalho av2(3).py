@@ -1,12 +1,31 @@
-hora = int(input('coloque horas: '))
-min = int(input('coloque minutos: '))
-if min > 60:
-    print('ERRO')
-else:
-    dia = str(input('esta de manha ou noite: '))
-    if hora > 12:
+def conversor(hora, min):
+    
+    if hora < 12:
+        enviar = f'Horas: {hora}:{min} am'
+    
+    elif hora > 12:
         hora = (hora - 12)
-    if dia == 'manha':
-        print(f'Horas: {hora}:{min} am')
-    if dia == 'noite':
-        print(f'Horas: {hora}:{min} pm')
+        enviar = f'Horas: {hora}:{min} pm'
+    saida(enviar)
+
+def saida(mensagem):
+    print(mensagem)
+
+while True:
+    hora = int(input('coloque horas: '))
+    
+    if hora < 0:
+        print('\nfinalizado\n')
+        break
+
+    if hora > 24:
+        print('\nERRO\n')
+    else:
+        min = int(input('coloque minutos: '))
+
+        if min > 60:
+            print('\nERRO\n')
+
+        else:
+            conversor(hora, min)
+    print('\nPara sair digite hora negativa\n')
